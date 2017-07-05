@@ -3,6 +3,8 @@ const app = express()
 const port = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 
+var index = require('./routes/index')
+
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
@@ -10,7 +12,7 @@ app.set('view engine','hbs')
 
 // app.use(express.static(__dirname + '../views'))
 app.use(express.static(__dirname + '../public'))
-
+app.use('/sign-in',index)
 
 app.get('/',(req,res)=>{
   res.render('index',{msg:'hello www, welcome to MB'})
