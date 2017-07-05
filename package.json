@@ -1,0 +1,26 @@
+{
+  "name": "music_box",
+  "version": "1.0.0",
+  "description": "Users become singer/songwriters",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacksondonovan/Music_Box.git"
+  },
+  "author": "Jackson Donovan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacksondonovan/Music_Box/issues"
+  },
+  "homepage": "https://github.com/jacksondonovan/Music_Box#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "hbs": "^4.0.1",
+    "knex": "^0.13.0"
+  }
+}
