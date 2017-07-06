@@ -16,12 +16,20 @@ app.set('view engine','hbs')
 app.use(express.static(__dirname + '../public'))
 
 //mounted off "/sign-in" action
-// app.post('/',(req,res)=>{
-//   res.redirect('/sign-up-newest-user')
-// })
 
 app.get('/',(req,res)=>{
     res.render('sign-up',{title:'Welcome to Music Box'})
+})
+
+app.post('/profile',(req,res)=>{
+  linkQuery.adduser(req.body).then(()=>{
+    console.log('update',req.body);
+    res.redirect('/sign-in/your-profile')
+  })
+})
+
+app.get('/your-profile',(req,res)=>{
+  res.render('profile',{msg:'This is your Profile Page'})
 })
 
 module.exports = app

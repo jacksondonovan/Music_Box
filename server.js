@@ -4,9 +4,7 @@ const port = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 const path = require('path')
 
-var routes = require('./routes/index');
-
-var index = require('./routes/index')
+var signIn = require('./routes/sign-up')
 var logIn = require('./routes/log-in')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
@@ -17,8 +15,9 @@ app.set('view engine','hbs')
 
 // app.use(express.static(__dirname + '../views'))
 app.use(express.static(__dirname + '../public'))
+app.use(express.static(path.join(__dirname, 'client')));
 
-app.use('/sign-in',index)
+app.use('/sign-in',signIn)
 app.use('/log-in',logIn)
 
 app.get('/',(req,res)=>{
