@@ -4,6 +4,7 @@ const port = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 const path = require('path')
 const router = express.Router()
+const bcrypt = require('bcrypt')
 
 const linkQuery = require('../db/linkQuery')
 
@@ -22,10 +23,28 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/profile',(req,res)=>{
-  linkQuery.adduser(req.body).then(()=>{
-    console.log('update',req.body);
-    res.redirect('/sign-in/your-profile')
+  linkQuery.allusers().where(
+    'username', req.body.username
+  ).first().then((userexists)=>{
+    if(userexists){
+      res.redirect('user-exists')
+    } else{
+      bcrypt.hash(req.body.password,10)
+      .then((hash)=>{
+        var newuser = req.body
+        newuser.password = hash
+        console.log(hash);
+        linkQuery.adduser(newuser).then(()=>{
+          console.log('update',req.body);
+          res.redirect('/sign-in/your-profile')
+        })
+      })
+    }
   })
+})
+
+app.get('/user-exists',(req,res)=>{
+  res.render('sign-up',{err: 'Already signed up'})
 })
 
 app.get('/your-profile',(req,res)=>{

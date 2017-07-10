@@ -3,11 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Log In Music Box</title>
-    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="/public/main.css">
   </head>
-  <body>
-    <a href="/">HOME</a>
-    {{msg}}
+  <body class="backdrop">
+      <div class="littlebox">
+        <a class="cen" href="/">HOME</a>
+        <h1 class="cen">{{msg}}</h1>
+        <h3 class="cen warn">{{err}}</h3>
+        <div class="theform">
+          <form class="loginform" action="/log-in/profile" method="post">
+            <div class="cen">
+              <label for="">Username</label>
+              <input type="text" name="username" value="">
+            </div>
+            <div class="cen">
+              <label for="">Password</label>
+              <input type="text" name="password" value="">
+            </div>
+            <div class="cen">
+              <button type="submit">Log In</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
 
 
 

@@ -1,3 +1,62 @@
-h1{
-  color:blue;
+html,body{
+  min-height: 100%;
+}
+.bigh1{
+  color:#FFF;
+}
+header{
+  width: 100%;
+}
+.topnav{
+  display: flex;
+  flex-direction: row;
+  background-color: #777;
+}
+.navul{
+  display: flex;
+  flex-direction: row;
+}
+div .list{
+  display: flex;
+  justify-content: center;
+}
+.list a{
+  text-decoration: none;
+  list-style: none;
+  width:40%;
+  color:#FFF;
+}
+img{
+  width:100%;
+  height:400px;
+}
+.cen{
+  display: flex;
+  justify-content: center;
+}
+form div{
+  margin-bottom: 5px;
+}
+.signupform{
+  margin-top: 10px;
+}
+.loginform{
+  margin-top: 10px;
+}
+.backdrop{
+  background-image: url('./images/guitars.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.littlebox{
+  border:2px solid #faebd7;
+  display: block;
+  justify-content: center;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #faebd7;
+}
+.warn{
+  color:red;
 }

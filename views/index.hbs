@@ -1,31 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="utf-8">
     <title>Music Box</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/main.css">
     <link rel="shortcut icon" href="#">
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="bigh1">
+
+    <header class="verytop">
+      <nav class="topnav col-sm-12">
+        <div class="bigh1 col-sm-9" align="left">
           <h1>MUSIC BOX!</h1>
         </div>
-        <div class="">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
+        <div class="list col-sm-3" align="right">
+          <ul class="navul" >
+            <a href="#"><li>About</li></a>
+            <a href="#"><li>Contact</li></a>
+            <a href="#"><li>Sign In</li></a>
           </ul>
         </div>
       </nav>
     </header>
-    {{msg}}
 
-    <a href="/sign-in"><button type="button" name="button">Sign Up</button></a>
-    <a href="/log-in"><button type="button" name="button">Log In</button></a>
+    <!-- <a href="/sign-in"><button type="button" name="button">Sign Up</button></a>
+    <a href="/log-in"><button type="button" name="button">Log In</button></a> -->
+    <carousel></carousel>
 
 
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/components/index.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#carouselExampleIndicators').carousel();
+        console.log('hey');
+      })
+    </script>
   </body>
 </html>
