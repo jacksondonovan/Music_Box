@@ -61,11 +61,23 @@ app.get('/invalid-log-in',(req,res)=>{
 
 app.get('/:username',(req,res)=>{
   var founduser = req.params.username
-  knex('user_info').select().where('username', founduser).first().then((data) => {
+  knex('user_info').select().where('username', founduser).then((data) => {
     console.log(data);
-    res.render('profile', {first_name: data.username})
+    res.render('profile', {newest: data[0]})
   })
 })
+
+app.get('/edit-profile/:username',(req,res)=>{
+  var name = req.params.username
+  knex('user_info').select().where('username',name).then((data)=>{
+    res.render('edit-profile',{user:data[0]})
+  })
+})
+
+
+
+
+
 
 app.get('/profil/:username',(req,res)=>{
   // var founduser = req.params.username
@@ -76,7 +88,18 @@ app.get('/profil/:username',(req,res)=>{
   res.render('profile')
 })
 
-
+app.post('/edited',(req,res)=>{
+  var newest = req.body
+  knex('user_info').where('id', newest.id).update({
+    'username': newest.username,
+    'first_name': newest.first_name,
+    'last_name': newest.last_name,
+    'fav_genre': newest.fav_genre
+  }).then((data)=>{
+    console.log('sttuuuuuffffff');
+    res.redirect('/profile/' + newest.username)
+  })
+})
 
 
 

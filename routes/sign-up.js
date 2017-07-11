@@ -51,7 +51,7 @@ app.get('/your-profile/:username',(req,res)=>{
   var founduser = req.params.username
   knex('user_info').select().where('username', founduser).first().then((data) => {
     console.log(data);
-    res.render('profile', {first_name: data.username})
+    res.render('profile', {newest: data})
   })
   // res.render('profile',{msg:'This is your Profile Page'})
 })

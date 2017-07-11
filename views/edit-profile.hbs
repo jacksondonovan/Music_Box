@@ -7,24 +7,25 @@
   </head>
   <body class="backdrop">
     <div class="littlebox">
-      <a class="cen" href="/edit-profile/:username">Back to Profile</a>
+      <a class="cen" href="/profile/:username">Back to Profile</a>
       <h1 class="cen">Edit Your Profile</h1>
-        <form class="signupform" action="/profile" method="post">
+        <form class="signupform" action="/profile/edited" method="post">
+          <input hidden type="integer" name="id" value="{{user.id}}">
           <div class="cen">
             <label for="">Username</label>
-            <input type="text" name="username" value="" required>
-          </div>
-          <div class="cen">
-            <label for="">Password</label>
-            <input type="text" name="password" value="" required>
+            <input type="text" name="username" value="{{user.username}}" required>
           </div>
           <div class="cen">
             <label for="">First Name</label>
-            <input type="text" name="first_name" value="" required>
+            <input type="text" name="first_name" value="{{user.first_name}}" required>
           </div>
           <div class="cen">
             <label for="">Last Name</label>
-            <input type="text" name="last_name" value="" required>
+            <input type="text" name="last_name" value="{{user.last_name}}" required>
+          </div>
+          <div class="cen">
+            <label for="">Favorite Genre of Music</label>
+            <input type="text" name="fav_genre" value="{{user.fav_genre}}" required>
           </div>
           <div class="cen">
             <button type="submit">Submit Changes</button>

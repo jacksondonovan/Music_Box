@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Music Box Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/main.css">
+
   </head>
   <body>
     <div class="">
       <a href="/">Log Out</a>
-      <a href="/edit-profile">Edit Profile</a>
+      <a href="/profile/edit-profile/{{newest.username}}">Edit Profile</a>
     </div>
     <div class="topbar">
       <div class="profpic">
@@ -28,7 +30,7 @@
         </div>
       </section>
     </main>
-    <h2> Welcome, {{first_name}}</h2>
+    <h2> Welcome, {{newest.first_name}}</h2>
 
 
 
