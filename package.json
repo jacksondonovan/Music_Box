@@ -17,7 +17,7 @@
     "url": "https://github.com/jacksondonovan/Music_Box/issues"
   },
   "homepage": "https://github.com/jacksondonovan/Music_Box#readme",
-  "engine": {
+  "engines": {
     "node": "8.1.4"
   },
   "dependencies": {
