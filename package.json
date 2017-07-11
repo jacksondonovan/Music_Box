@@ -17,6 +17,9 @@
     "url": "https://github.com/jacksondonovan/Music_Box/issues"
   },
   "homepage": "https://github.com/jacksondonovan/Music_Box#readme",
+  "engine": {
+    "node": "7.10.0"
+  },
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
