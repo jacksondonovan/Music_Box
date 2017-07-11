@@ -8,7 +8,20 @@ function allusers(){
   return knex('user_info').select()
 }
 
+function updateUser(obj){
+  var newdata = obj
+  return knex('user_info').where(
+    'id', newdata.id
+  ).update({
+    'username': newdata.username,
+    'first_name': newdata.first_name,
+    'last_name': newdata.last_name,
+    'fav_genre': newdata.fav_genre
+  })
+}
+
 module.exports = {
   adduser,
-  allusers
+  allusers,
+  updateUser
 }
