@@ -73,6 +73,11 @@ app.get('/edit-profile/:username',(req,res)=>{
   })
 })
 
+app.get('/delete/:username',(req,res)=>{
+  linkQuery.deleteUser(req.params.username).then(()=>{
+    res.redirect('/')
+  })
+})
 
 
 

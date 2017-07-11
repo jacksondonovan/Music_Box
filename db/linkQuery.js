@@ -10,9 +10,8 @@ function allusers(){
 
 function updateUser(obj){
   var newdata = obj
-  return knex('user_info').where(
-    'id', newdata.id
-  ).update({
+  return knex('user_info').where('id', newdata.id)
+  .update({
     'username': newdata.username,
     'first_name': newdata.first_name,
     'last_name': newdata.last_name,
@@ -20,8 +19,14 @@ function updateUser(obj){
   })
 }
 
+function deleteUser(userName){
+  return knex('user_info').where('username',userName).del()
+}
+
+
 module.exports = {
   adduser,
   allusers,
-  updateUser
+  updateUser,
+  deleteUser
 }
