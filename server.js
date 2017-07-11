@@ -8,6 +8,8 @@ var cookieSession = require('cookie-session')
 var key = process.env.COOKIE_KEY || 'asdfasdf'
 var signIn = require('./routes/sign-up')
 var logIn = require('./routes/log-in')
+var profile = require('./routes/profile')
+var editprofile = require('./routes/edit-profile')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
@@ -28,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'server')));
 
 app.use('/sign-in',signIn)
 app.use('/log-in',logIn)
+app.use('/profile',profile)
+app.use('/edit-profile',editprofile)
 
 app.get('/',(req,res)=>{
   res.render('index',{msg:'hello www, welcome to MB'})

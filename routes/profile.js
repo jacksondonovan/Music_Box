@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const router = express.Router()
 const linkQuery = require('../db/linkQuery')
-const knex = require('knex')
+const knex = require('../db/knex')
 
 const bcrypt = require('bcrypt')
 var cookieSession = require('cookie-session')
@@ -21,36 +21,37 @@ app.set('view engine','hbs')
 // app.use(express.static(__dirname + '../views'))
 app.use(express.static(__dirname + '../public'))
 
-//mounted off "/log-in" action
+//mounted off "/profile" action
 
-app.get('/',(req,res)=>{
-  res.render('log-in',{msg:'Welcome Back, please, log in'})
-})
+// app.get('/',(req,res)=>{
+//   //submit changes trigger...
+//   res.render('profile')
+// })
 
-app.post('/profille',(req,res)=>{
+
+app.post('/',(req,res)=>{
   linkQuery.allusers().where({
     username: req.body.username
   }).first().then((user)=>{
-    console.log(user);
     // res.redirect('logged-in')
     if(user){
       bcrypt.compare(
         req.body.password, user.password
       ).then(function(data){
-        console.log(data);
         if(data){
           req.session.id = user.id
-          // res.redirect('/profile/' + user.username)
+          res.redirect('/profile/' + user.username)
         } else{
-          res.redirect('no-no')
+          res.redirect('/profile/try-again')
         }
       })
     } else{
-      res.redirect('invalid-log-in')
+      res.redirect('/profile/invalid-log-in')
     }
   })
 })
-app.get('/no-no',(req,res)=>{
+
+app.get('/try-again',(req,res)=>{
   res.render('log-in',{err: 'Incorrect Password!'})
 })
 
@@ -58,9 +59,26 @@ app.get('/invalid-log-in',(req,res)=>{
   res.render('log-in',{err:'Username not found!'})
 })
 
-app.get('/profile/:username',(req,res)=>{
+app.get('/:username',(req,res)=>{
+  var founduser = req.params.username
+  knex('user_info').select().where('username', founduser).first().then((data) => {
+    console.log(data);
+    res.render('profile', {first_name: data.username})
+  })
+})
+
+app.get('/profil/:username',(req,res)=>{
+  // var founduser = req.params.username
+  // knex('user_info').select().where('username', founduser).first().then((data) => {
+  //   console.log(data);
+  //   res.render('profile', {first_name: data.username})
+  // })
   res.render('profile')
 })
 
 
-module.exports = app
+
+
+
+
+module.exports = app;

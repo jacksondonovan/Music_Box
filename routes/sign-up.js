@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-
+const knex = require('../db/knex')
 const linkQuery = require('../db/linkQuery')
 
 app.use(bodyParser.urlencoded({extended:false}))
@@ -36,7 +36,7 @@ app.post('/profile',(req,res)=>{
         console.log(hash);
         linkQuery.adduser(newuser).then(()=>{
           console.log('update',req.body);
-          res.redirect('/sign-in/your-profile')
+          res.redirect('/sign-in/your-profile/' + newuser.username)
         })
       })
     }
@@ -47,8 +47,17 @@ app.get('/user-exists',(req,res)=>{
   res.render('sign-up',{err: 'Already signed up'})
 })
 
-app.get('/your-profile',(req,res)=>{
-  res.render('profile',{msg:'This is your Profile Page'})
+app.get('/your-profile/:username',(req,res)=>{
+  var founduser = req.params.username
+  knex('user_info').select().where('username', founduser).first().then((data) => {
+    console.log(data);
+    res.render('profile', {first_name: data.username})
+  })
+  // res.render('profile',{msg:'This is your Profile Page'})
+})
+
+app.get('/welcome',(req,res)=>{
+  res.render('profile',{first_name: data.username})
 })
 
 module.exports = app

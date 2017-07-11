@@ -6,11 +6,36 @@
     <link rel="stylesheet" href="/public/main.css">
   </head>
   <body>
-    <a href="/">Log Out</a>
-    <h1>Welcome Home</h1>
-    {{msg}}
+    <div class="">
+      <a href="/">Log Out</a>
+      <a href="/edit-profile">Edit Profile</a>
+    </div>
+    <div class="topbar">
+      <div class="profpic">
+        <img src="/public/images/front-piano.jpg" alt="">
+        <img class="notes" src="/public/images/wooden-music-box.jpg" alt="">
+      </div>
+    </div>
+    <main>
+      <section>
+        <div class="bio">
+          <img src="/public/images/front-piano.jpg" alt="">
+        </div>
+      </section>
+      <section>
+        <div class="songlisting">
+          <img class="songs" src="/public/images/wooden-music-box.jpg" alt="">
+        </div>
+      </section>
+    </main>
+    <h2> Welcome, {{first_name}}</h2>
 
 
 
+
+
+
+    <!-- <h1>Welcome Home</h1>
+    {{msg}} -->
   </body>
 </html>
